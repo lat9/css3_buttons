@@ -61,8 +61,10 @@
     while ( (substr($link, -1) == '&') || (substr($link, -1) == '?') ) $link = substr($link, 0, -1);
 // Add the session ID when moving from different HTTP and HTTPS servers, or when SID is defined
     if ( ($add_session_id == true) && ($session_started == true) && (SESSION_FORCE_COOKIE_USE == 'False') ) {
-      if (defined('SID') && zen_not_null(SID)) {
-        $sid = SID;
+//-bof-v1.0.4-Include out-of-memory fix (http://www.zen-cart.com/showthread.php?207435-php-5-4-fatal-error-Allowed-memory-size-of-83886080-bytes-exhausted&p=1240551#post1240551)
+      if (defined('SID') && zen_not_null(constant('SID'))) {
+        $sid = constant ('SID');
+//-eof-v1.0.4
 //      } elseif ( ( ($request_type == 'NONSSL') && ($connection == 'SSL') && (ENABLE_SSL_ADMIN == 'true') ) || ( ($request_type == 'SSL') && ($connection == 'NONSSL') ) ) {
       } elseif ( ( ($request_type == 'NONSSL') && ($connection == 'SSL') && (ENABLE_SSL == 'true') ) || ( ($request_type == 'SSL') && ($connection == 'NONSSL') ) ) {
         if ($http_domain != $https_domain) {
