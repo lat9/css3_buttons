@@ -306,11 +306,11 @@
 
    $button_name = basename($image, '.gif');
    
-//-bof-20141016-lat9-css3_buttons-Add font-awesome glyph support  *** 1 of xx ***
+//-bof-20141016-lat9-css3_buttons-Add font-awesome glyph support  *** 1 of 3 ***
    global $cssButtonGlyphs;  //-Defined in /includes/extra_datafiles/css_button_glyphs.php
    $button_glyph = (isset ($cssButtonGlyphs) && is_array ($cssButtonGlyphs) && isset ($cssButtonGlyphs[$button_name])) ? ($cssButtonGlyphs[$button_name] . '&nbsp;&nbsp;') : '';
    
-//-eof-20141016-lat9-css3_buttons-Add font-awesome glyph support  *** 1 of xx ***
+//-eof-20141016-lat9-css3_buttons-Add font-awesome glyph support  *** 1 of 3 ***
 
     // if no secondary class is set use the image name for the sec_class
     if (empty($sec_class)) $sec_class = $button_name;
@@ -342,13 +342,20 @@
           $parameters = str_replace($matches[1], '', $parameters);
         }
       }
-
-      $css_button = '<input class="' . $mouse_out_class . '" ' . $css_button_js . ' type="submit" value="' . $text . '"' . $tooltip . $parameters . ' />';
+//-bof-20141016-lat9-css3_buttons-Add font-awesome glyphs  *** 2 of 3 ***
+      if (CSS3_BUTTONS_SUBMIT_TYPE == 'button') {
+        $css_button = '<button class="' . $mouse_out_class . '" ' . $css_button_js . ' type="submit" value="' . $text . '"' . $tooltip . $parameters . '>' . $button_glyph . $text . '</button>';
+        
+      } else {
+        $css_button = '<input class="' . $mouse_out_class . '" ' . $css_button_js . ' type="submit" value="' . $text . '"' . $tooltip . $parameters . ' />';
+        
+      }
+//-eof-20141016-lat9-css3_buttons-Add font-awesome glyphs  *** 2 of 3 ***
     }
 
     if ($type=='button'){
       // link button
-      $css_button = '<span class="' . $mouse_out_class . '" ' . $css_button_js . $tooltip . $parameters . '>&nbsp;' . $button_glyph . $text . '&nbsp;</span>';  //-20141016-lat9-css3_buttons-Add font-awesome glyphs *** 2 of xx ***
+      $css_button = '<span class="' . $mouse_out_class . '" ' . $css_button_js . $tooltip . $parameters . '>&nbsp;' . $button_glyph . $text . '&nbsp;</span>';  //-20141016-lat9-css3_buttons-Add font-awesome glyphs *** 3 of 3 ***
     }
     return $css_button;
   }

@@ -8,6 +8,7 @@
 //
 $cssButtonGlyphs = array (
   'button_back' => '<i class="fa fa-undo"></i>',
-  'button_in_cart' => '<i class="fa fa-shopping-cart"></i>'
+  'button_in_cart' => '<i class="fa fa-shopping-cart"></i>',
+  'button_send' => '<i class="fa fa-send"></i>',
   
 );
