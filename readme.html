@@ -96,14 +96,13 @@ td, th { padding: 5px; }
   <li>v1.0.4, 2014-04-16<ul>
     <li>Include the &quot;memory exhausted&quot; fix (see <a href="http://www.zen-cart.com/showthread.php?207435-php-5-4-fatal-error-Allowed-memory-size-of-83886080-bytes-exhausted&p=1240551#post1240551" target="_blank">this</a> post for details) in the <em>zen_href_link</em> function in /includes/functions/html_output.php.</li>
   </ul></li>
-  <li>v1.1.0, 2014-10-16<ul>
-    <li>Include a method to allow font-awesome glyphs to be included in the CSS buttons.</li>
+  <li>v1.1.0, 2014-10-18<ul>
+    <li>Include a method to allow <em>Font Awesome</em> glyphs to be included in the CSS buttons.</li>
   </ul></li>
 </ul>
 
 <h2>What it does</h2>
-<p>This plugin replaces Zen-Cart's default CSS button functionality with some CSS3 styling, based on the initial output provided by <a href="http://www.cssbuttongenerator.com/" target="_blank">http://www.cssbuttongenerator.com/</a>.  The buttons produced have rounded corners in the more recent browsers and &quot;fall back&quot; to squared corners on non-CSS3 aware browsers.</p>
-<p><strong>Note:</strong> The base button functionality is included in Zen Cart v1.5.3 and later; you should only install this plugin if you plan to use its integration with <a href="http://fortawesome.github.io/Font-Awesome/" target="_blank">Font Awesome</a>.</p>
+<p>This plugin replaces Zen-Cart's default CSS button functionality (prior to v1.5.3) with some CSS3 styling, based on the initial output provided by <a href="http://www.cssbuttongenerator.com/" target="_blank">http://www.cssbuttongenerator.com/</a>.  The buttons produced have rounded corners in the more recent browsers and &quot;fall back&quot; to squared corners on non-CSS3 aware browsers.  If your store is running Zen Cart v1.5.3 or later, you should install this plugin <em>only</em> if you plan to use its integration with <a href="http://fortawesome.github.io/Font-Awesome/" target="_blank">Font Awesome</a> glyphs.</p>
 
 <h2>How to use it</h2>
 <p>First, install the plugin using the following steps:</p>
@@ -126,7 +125,7 @@ td, th { padding: 5px; }
   </tr>
   <tr>
     <td>Include a link to the Font Awesome stylesheet?</td>
-    <td>If true, a link to the Font Awesome CSS file will be included in each page\'s header.  If your template already includes Font Awesome, leave this setting <em>false</em>.</td>
+    <td>If true, a link to the Font Awesome CSS file will be included in each page's header.  If your template already includes Font Awesome, leave this setting <em>false</em>.</td>
     <td>false</td>
   </tr>
   <tr>
@@ -148,7 +147,7 @@ td, th { padding: 5px; }
   <div class="buttonRow back"><a href="#"><span class="normal_button button cssButton button_link" onmouseover="this.className='normal_button button cssButtonHover button_link button_linkHover'" onmouseout="this.className='normal_button button cssButton button_link'">&nbsp;Back&nbsp;</span></span></a></div>
 </div>
 <div class="clearBoth"></div>
-<p>To include <em>Font Awesome</em> glyphs in your buttons, edit the file /includes/extra_definitions/css_button_glyphs.php to assign the glyphs on a button-by-button basis using the array defined within that script.  The &quot;Send&quot; button below shows the formatting displayed when <em>Submit-button HTML Tag</em> is set to <b>button</b>.</p>
+<p>To include <em>Font Awesome</em> glyphs in your buttons, edit the file /includes/extra_definitions/css_button_glyphs.php to assign the glyphs on a button-by-button basis using the array defined within that script.  The &quot;Send&quot; button below shows the formatting displayed when <em>Submit-button HTML Tag</em> is set to <b>button</b>.  In all cases, the glyph you define is prepended to the button's name.</p>
 <p><strong>Note:</strong> Font Awesome glyphs are not applied when <em>Submit-button HTML Tag</em> is set to <b>input</b>.</p>
 <div id="fa-buttons">
   <div class="buttonRow forward"><button class="cssButton submit_button button  button_send" onmouseover="this.className='cssButtonHover  button_send button_sendHover'" onmouseout="this.className='cssButton submit_button button  button_send'" type="submit" value="Send Now"><i class="fa fa-send"></i>&nbsp;&nbsp;Send</button></div>
