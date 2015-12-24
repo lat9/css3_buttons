@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>CSS3 Buttons for Zen-Cart 1.5.0 and later</title>
 
 <style type="text/css">
@@ -69,6 +70,7 @@ span.normal_button:hover {
 #fa-buttons { margin-top: 5px; }
 table, td, th { border: 1px solid #000099; border-collapse: collapse; }
 td, th { padding: 5px; }
+.smaller { font-size: smaller; }
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" />
@@ -76,44 +78,20 @@ td, th { padding: 5px; }
 
 <body>
 <h1>CSS3 Buttons for Zen-Cart 1.5.0 (and later)</h1>
-<h3>Version 1.1.1 by lat9 (vinosdefrutastropicales.com). Copyright &copy; 2012-2015, <a href="http://vinosdefrutastropicales.com" target="_blank">Vinos de Frutas Tropicales</a></h3>
+<h3>Version 1.1.2 by lat9 (vinosdefrutastropicales.com). Copyright &copy; 2012-2015, <a href="http://vinosdefrutastropicales.com" target="_blank">Vinos de Frutas Tropicales</a></h3>
 <p>Current Support Thread at Zen Cart Forums: <a href="http://www.zen-cart.com/forum/showthread.php?t=194990">http://www.zen-cart.com/forum/showthread.php?t=194990</a></p>
-<h2>Version History:</h2>
-<ul>
-  <li>v1.0.0, 2012-04-15, Initial release.</li>
-  <li>v1.0.1, 2012-04-24<ul>
-    <li>Corrected problem with submit button hover state on Internet Explorer.</li>
-    <li>Updated this readme to note that the CSS button functionality needs to be enabled in the admin settings.</li>
-  </ul></li>
-  <li>v1.0.2, 2013-03-16<ul>
-    <li>Simplified HTML generated for normal (i.e. non-submit) buttons and enabled button-specific styling. No changes are required to your existing CSS if you are updating.</li>
-    <li>Removed the box-shadow styling from the overall button CSS, was causing a small 1px <em>shadow</em> when hovering on the link-type buttons.</li>
-    <li>Removed 'active' selector styling from the CSS file; was causing unwanted "jerk" on hover.</li>
-  </ul></li>
-  <li>v1.0.3, 2013-12-20<ul>
-    <li>If the <em>name</em> attribute is included in the $parameters for a submit-type button, need to &quot;emulate&quot; the return from an &lt;input type=&quot;image&quot; /&gt; type button press by adding <b>_x</b> to the name specified. The solution is based on <a href="http://www.zen-cart.com/showthread.php?47554-Edit-Bug-on-the-Send-Gift-Certificate-Confirmation-page-using-CSS-buttons" target="_blank">this</a> thread in the Zen Cart forums.</li>
-  </ul></li>
-  <li>v1.0.4, 2014-04-16<ul>
-    <li>Include the &quot;memory exhausted&quot; fix (see <a href="http://www.zen-cart.com/showthread.php?207435-php-5-4-fatal-error-Allowed-memory-size-of-83886080-bytes-exhausted&p=1240551#post1240551" target="_blank">this</a> post for details) in the <em>zen_href_link</em> function in /includes/functions/html_output.php.</li>
-  </ul></li>
-  <li>v1.1.0, 2014-10-18<ul>
-    <li>Include a method to allow <em>Font Awesome</em> glyphs to be included in the CSS buttons.  This method was gratefully borrowed from a prototype developed by <em>rbarbour</em>.</li>
-  </ul></li>
-  <li>v1.1.1, 2015-11-29<ul>
-    <li>Include security-patch for <b>/includes/functions/html_output.php</b>, per Zen Cart forums.</li>
-  </ul></li>
-</ul>
 
 <h2>What it does</h2>
-<p>This plugin replaces Zen-Cart's default CSS button functionality (prior to v1.5.3) with some CSS3 styling, based on the initial output provided by <a href="http://www.cssbuttongenerator.com/" target="_blank">http://www.cssbuttongenerator.com/</a>.  The buttons produced have rounded corners in the more recent browsers and &quot;fall back&quot; to squared corners on non-CSS3 aware browsers.  If your store is running Zen Cart v1.5.3 or later, you should install this plugin <em>only</em> if you plan to use its integration with <a href="http://fortawesome.github.io/Font-Awesome/" target="_blank">Font Awesome</a> glyphs.</p>
+<p>This plugin replaces Zen-Cart's default CSS button functionality (prior to v1.5.3) with some CSS3 styling, based on the initial output provided by <a href="http://www.cssbuttongenerator.com/" target="_blank">http://www.cssbuttongenerator.com/</a>.  The buttons produced have rounded corners in the more recent browsers and &quot;fall back&quot; to squared corners on non-CSS3 aware browsers.</p>
+<p><strong>If your store is running Zen Cart v1.5.3 or later, the base functionality provided by this plugin is already part of the core!</strong> You should install this plugin <em>only</em> if you plan to use its integration with <a href="http://fortawesome.github.io/Font-Awesome/" target="_blank">Font Awesome</a> glyphs.</p>
 
 <h2>How to use it</h2>
 <p>First, install the plugin using the following steps:</p>
 <ol>
   <li>Rename the plugin's <b>YOUR_ADMIN</b> folder to match your store's admin folder name.</li>
   <li>Rename the plugin's <b>YOUR_TEMPLATE</b> folder to match your store's current template name.</li>
-  <li>If the file <span class="corefile">/includes/functions/html_output.php</span> is modified from your Zen Cart version, use a file-merge program (like WinMerge or Beyond Compare) to merge your store's special changes into the plugin's version of the file.  The plugin uses the file version from Zen Cart v1.5.3, with three (3) marked change sections to the <em>zenCssButton</em> function.</li>
-  <li>If the file /includes/templates/YOUR_TEMPLATE/common/html_header.php exists, use a file-merge program to merge your store's special changes into the plugin's version of the file.  The plugin uses the file version from Zen Cart v1.5.3, with one (1) marked change section.</li>
+  <li>If your current version of the file <span class="corefile">/includes/functions/html_output.php</span> is modified from your Zen Cart version, use a file-merge program (like WinMerge or Beyond Compare) to merge your store's special changes into the plugin's version of the file.  The plugin uses the file version from Zen Cart v1.5.5, with three (3) marked change sections to the <em>zenCssButton</em> function.</li>
+  <li>If the file /includes/templates/YOUR_TEMPLATE/common/html_header.php exists, use a file-merge program to merge your store's special changes into the plugin's version of the file.  The plugin uses the file version from Zen Cart v1.5.5's <code>template_default</code> template, with one (1) marked change section.</li>
   <li>Copy the plugin's files to your store's file system.</li>
   <li>Log into your Zen Cart admin.  This will cause the initialization script for the CSS buttons to run, adding the items identified below to your admin's <em>Configuration-&gt;Layout Settings</em>.</li>
 </ol>
@@ -177,7 +155,37 @@ span.normal_button.button_sold_out_smHover {
   <li>/includes/templates/YOUR_TEMPLATE/common/html_header.php</li>
   <li>/includes/templates/YOUR_TEMPLATE/common/tpl_load_font_awesome.php</li>
   <li>/includes/templates/YOUR_TEMPLATE/css/stylesheet_css_buttons.css</li>
+  <li>/includes/templates/YOUR_TEMPLATE/jscript/jscript.min.js. <span class="smaller">This is the minimized jQuery 1.11.3 library, as shipped with Zen Cart v1.5.5's <em>template_default</em> template.</span></li>
   <li>/YOUR_ADMIN/includes/functions/extra_functions/init_css3_buttons.php</li>
 </ol>
+<h2>Version History:</h2>
+<ul>
+  <li>v1.0.0, 2012-04-15, Initial release.</li>
+  <li>v1.0.1, 2012-04-24<ul>
+    <li>Corrected problem with submit button hover state on Internet Explorer.</li>
+    <li>Updated this readme to note that the CSS button functionality needs to be enabled in the admin settings.</li>
+  </ul></li>
+  <li>v1.0.2, 2013-03-16<ul>
+    <li>Simplified HTML generated for normal (i.e. non-submit) buttons and enabled button-specific styling. No changes are required to your existing CSS if you are updating.</li>
+    <li>Removed the box-shadow styling from the overall button CSS, was causing a small 1px <em>shadow</em> when hovering on the link-type buttons.</li>
+    <li>Removed 'active' selector styling from the CSS file; was causing unwanted "jerk" on hover.</li>
+  </ul></li>
+  <li>v1.0.3, 2013-12-20<ul>
+    <li>If the <em>name</em> attribute is included in the $parameters for a submit-type button, need to &quot;emulate&quot; the return from an &lt;input type=&quot;image&quot; /&gt; type button press by adding <b>_x</b> to the name specified. The solution is based on <a href="http://www.zen-cart.com/showthread.php?47554-Edit-Bug-on-the-Send-Gift-Certificate-Confirmation-page-using-CSS-buttons" target="_blank">this</a> thread in the Zen Cart forums.</li>
+  </ul></li>
+  <li>v1.0.4, 2014-04-16<ul>
+    <li>Include the &quot;memory exhausted&quot; fix (see <a href="http://www.zen-cart.com/showthread.php?207435-php-5-4-fatal-error-Allowed-memory-size-of-83886080-bytes-exhausted&p=1240551#post1240551" target="_blank">this</a> post for details) in the <em>zen_href_link</em> function in /includes/functions/html_output.php.</li>
+  </ul></li>
+  <li>v1.1.0, 2014-10-18<ul>
+    <li>Include a method to allow <em>Font Awesome</em> glyphs to be included in the CSS buttons.  This method was gratefully borrowed from a prototype developed by <em>rbarbour</em>.</li>
+  </ul></li>
+  <li>v1.1.1, 2015-11-29<ul>
+    <li>Include security-patch for <b>/includes/functions/html_output.php</b>, per Zen Cart forums.</li>
+  </ul></li>
+  <li>v1.1.2, 2015-12-24<ul>
+    <li>Update to use Zen Cart v1.5.5 as the change-basis for all core- and template-files' changes.</li>
+  </ul></li>
+</ul>
+
 </body>
 </html>

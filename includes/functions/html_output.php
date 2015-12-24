@@ -4,10 +4,10 @@
  * HTML-generating functions used throughout the core
  *
  * @package functions
- * @copyright Copyright 2003-2014 Zen Cart Development Team
+ * @copyright Copyright 2003-2015 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
- * @version GIT: $Id: Author: DrByte  Sat Apr 19 13:30:33 2014 -0400 Modified in v1.5.3 $
+ * @version GIT: $Id: Author: DrByte  Modified in v1.5.5 $
  */
 
 /*
@@ -412,7 +412,7 @@
  *  Output a form password field
  */
   function zen_draw_password_field($name, $value = '', $parameters = 'maxlength="40"') {
-    return zen_draw_input_field($name, $value, $parameters, 'password', false);  //-20151129-Forum bugfix
+    return zen_draw_input_field($name, $value, $parameters, 'password', false);
   }
 
 /*
@@ -472,10 +472,10 @@
 /*
  *  Output a form hidden field
  */
-  function zen_draw_hidden_field($name, $value = '', $parameters = '') {
+  function zen_draw_hidden_field($name, $value = '~*~*#', $parameters = '') {
     $field = '<input type="hidden" name="' . zen_sanitize_string(zen_output_string($name)) . '"';
 
-    if (zen_not_null($value)) {
+    if (zen_not_null($value) && $value != '~*~*#') {
       $field .= ' value="' . zen_output_string($value) . '"';
     } elseif (isset($GLOBALS[$name]) && is_string($GLOBALS[$name])) {
       $field .= ' value="' . zen_output_string(stripslashes($GLOBALS[$name])) . '"';
@@ -587,4 +587,3 @@
         || $current_page_base=='down_for_maintenance') $addparms = 'rel="nofollow"';
     return ($parameters == '' ? $addparms : $parameters . ' ' . $addparms);
   }
-?>
