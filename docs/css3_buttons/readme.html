@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CSS3 Buttons for Zen-Cart 1.5.4 and later</title>
+<link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+a, a:active, a:visited { color: #006666; text-decoration: none; }
+a:hover { color:#00CC99; text-decoration: underline; }
+BODY, P, H1, H2, H3, H4, H5, H6, LI, TD, DD, DT, pre, code, table, #outer-container {
+  font-family: Roboto, Verdana, AvantGarde, Tahoma, Arial, sans-serif;
+  font-size: 12pt;
+  color: black;
+  padding: 0px;
+  margin: 20px;
+  line-height: 1.75em;
+}
+H1, H2, H3, H4 { font-weight: bold; }
+h1 { font-size: 20px; }
+h2 { font-size: 16px; }
+pre, code { padding-left: 25px; font-family: Courier; font-size: 12pt; }
+pre.no-pad, code.no-pad { padding: 0; margin: 0; }
+ol li, ul li, ul li ul li { margin: 5px 0; padding: 0; }
+textarea { width: 100%; }
+.corefile { color: red; }
+.template { color: green; }
+.buttonRow a {
+  text-decoration: none;
+}
+.button, input.button, input.cssButtonHover {
+  border-radius:6px;
+  display:inline-block;
+  font-family:Verdana;
+  font-size:13px;
+  font-weight:bold;
+  margin: 0;
+  padding:3px 8px;
+  text-decoration:none;
+}
+input.submit_button {
+  background-color:#fee8b9;  /* Submit button background color */
+  border: 1px solid #638263;  /* Submit button border color */
+  font-size: 13px;
+  font-weight: bold;
+  display: inline-block;
+  margin: 0;
+  padding: 3px 8px;
+  color: #404040;  /* Text color for submit buttons */
+}
+input.submit_button:hover, input.cssButtonHover {
+  background-color:#ffdc9c;  /* Hover color for the submit buttons */
+  border: 1px solid #638263;  /* Submit button border color */
+  cursor: pointer;
+}
+span.normal_button {
+  background-color:#ced79c;  /* Link button background color */
+  border:1px solid #638263;  /* Link button border color */
+  color:#404040;  /* Text color for link-related buttons */
+}
+span.normal_button:hover {
+  background-color:#b4bc8b;  /* Hover color for link-related buttons */
+}
+.forward { float: right; }
+.back { float: back; }
+.clearBoth { clear: both; }
+#buttons, #fa-buttons { margin-left: 20px; width: 300px; }
+#fa-buttons { margin-top: 5px; }
+table, td, th { border: 1px solid black; border-collapse: collapse; }
+td, th { padding: 5px; }
+th { background-color: #eee; }
+.smaller { font-size: smaller; }
+
+.etabs { margin: 0; padding: 0; }
+.tab { display: inline-block; zoom:1; *display:inline; background: #eee; border: solid 1px #999; border-bottom: none; border-radius: 4px 4px 0 0; margin: 0; }
+.tab a { font-size: 14px; line-height: 2em; display: block; padding: 0 10px; outline: none; }
+.tab a:hover { text-decoration: underline; }
+.tab.active { background: #fff; padding-top: 6px; position: relative; top: 1px; border-color: #666; }
+.tab a.active { font-weight: bold; }
+.tab-container .panel-container { background: #fff; border: solid #666 1px; padding: 10px; border-radius: 0 4px 4px 4px; }
+.panel-container { margin-bottom: 10px; }
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" />
+<script src="jquery-1.7.1.min.js" type="text/javascript"></script> 
+<script src="jquery.easytabs.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+  $(document).ready( function() {
+      $('#tab-container').easytabs();
+  });
+</script>
+</head>
+<body>
+  <h1>CSS3 Buttons for Zen-Cart 1.5.4 (and later)</h1>
+  <h3>Version 1.1.3 by lat9. Copyright &copy; 2012-2016, <a href="http://vinosdefrutastropicales.com" target="_blank">Vinos de Frutas Tropicales</a></h3>
+  <p>Current Support Thread at Zen Cart Forums: <a href="http://www.zen-cart.com/forum/showthread.php?t=194990">http://www.zen-cart.com/forum/showthread.php?t=194990</a></p>
+
+  <div class="tab-container" id="outer-container">
+    <ul class="etabs">
+      <li class="tab"><a href="#overview">Overview</a></li>
+      <li class="tab"><a href="#installation">Installation</a></li>
+      <li class="tab"><a href="#customization">Customization</a></li>
+      <li class="tab"><a href="#version">Change History</a></li>
+    </ul>
+    <div class="panel-container">
+      <div id="overview">
+        <h2>What it does</h2>
+        <p>This plugin replaces Zen-Cart's (v1.5.4+) default CSS button functionality, adding the capability to associate <em>Font Awesome</em> glyphs with your store's CSS buttons.</p>
+      </div>
+      <div id="installation">
+        <p>Follow these steps to install the <em>CSS3 Buttons</em> plugin, after unzipping the plugin's distribution zip-file:</p>
+        <ol>
+          <li>Rename the <b>YOUR_ADMIN</b> folder to match your store's admin folder name.</li>
+          <li>Copy the plugin's files to your store's file system.</li>
+          <li>Log into your Zen Cart admin.  This will cause the initialization script for the CSS buttons to run, adding configuration items to your admin's <em>Configuration-&gt;Layout Settings</em> page.</li>
+          <li>Create a backup copy of your store's current <code class="no-pad">/includes/functions/html_output.php</code> file.</li>
+          <li>Edit your store's copy of <code class="no-pad">/includes/functions/html_output.php</code>, replacing the <em>zenCssButton</em> function with the following:
+            <br /><textarea rows="20">
+/**
+ * generate CSS buttons in the current language
+ * concept from contributions by Seb Rouleau and paulm, subsequently adapted to Zen Cart
+ * note: any hard-coded buttons will not be able to use this function
+**/
+  function zenCssButton($image = '', $text, $type, $sec_class = '', $parameters = '') {
+   global $css_button_text, $css_button_opts, $template, $current_page_base, $language;
+
+   $button_name = basename($image, '.gif');
+   
+//-bof-20141016-lat9-css3_buttons-Add font-awesome glyph support  *** 1 of 3 ***
+   global $cssButtonGlyphs;  //-Defined in /includes/extra_datafiles/css_button_glyphs.php
+   $button_glyph = (isset ($cssButtonGlyphs) && is_array ($cssButtonGlyphs) && isset ($cssButtonGlyphs[$button_name])) ? ($cssButtonGlyphs[$button_name] . '&nbsp;&nbsp;') : '';
+   
+//-eof-20141016-lat9-css3_buttons-Add font-awesome glyph support  *** 1 of 3 ***
+
+    // if no secondary class is set use the image name for the sec_class
+    if (empty($sec_class)) $sec_class = $button_name;
+    if(!empty($sec_class)) $sec_class = ' ' . $sec_class;
+    if(!empty($parameters))$parameters = ' ' . $parameters;
+    $mouse_out_class  = 'cssButton ' . (($type == 'submit') ? 'submit_button button ' : 'normal_button button ') . $sec_class;
+    $mouse_over_class = 'cssButtonHover ' . (($type == 'button') ? 'normal_button button ' : '') . $sec_class . $sec_class . 'Hover';
+    // javascript to set different classes on mouseover and mouseout: enables hover effect on the buttons
+    // (pure css hovers on non link elements do work work in every browser)
+    $css_button_js =  'onmouseover="this.className=\''. $mouse_over_class . '\'" onmouseout="this.className=\'' . $mouse_out_class . '\'"';
+
+    if (CSS_BUTTON_POPUPS_IS_ARRAY == 'true') {
+      $popuptext = (!empty($css_button_text[$button_name])) ? $css_button_text[$button_name] : ($button_name . CSSBUTTONS_CATALOG_POPUPS_SHOW_BUTTON_NAMES_TEXT);
+      $tooltip = ' title="' . $popuptext . '"';
+    } else {
+      $tooltip = '';
+    }
+    $css_button = '';
+
+    if ($type == 'submit'){
+      // form input button
+      if ($parameters != '') {
+        // If the input parameters include a "name" attribute, need to emulate an <input type="image" /> return value by adding a _x to the name parameter (creds to paulm)
+        if (preg_match('/name="([a-zA-Z0-9\-_]+)"/', $parameters, $matches)) {
+          $parameters = str_replace('name="' . $matches[1], 'name="' . $matches[1] . '_x', $parameters);
+        }
+        // If the input parameters include a "value" attribute, remove it since that attribute will be set to the input text string.
+        if (preg_match('/(value="[a-zA-Z0=9\-_]+")/', $parameters, $matches)) {
+          $parameters = str_replace($matches[1], '', $parameters);
+        }
+      }
+//-bof-20141016-lat9-css3_buttons-Add font-awesome glyphs  *** 2 of 3 ***
+      if (CSS3_BUTTONS_SUBMIT_TYPE == 'button') {
+        $css_button = '<button class="' . $mouse_out_class . '" ' . $css_button_js . ' type="submit" value="' . $text . '"' . $tooltip . $parameters . '>' . $button_glyph . $text . '</button>';
+        
+      } else {
+        $css_button = '<input class="' . $mouse_out_class . '" ' . $css_button_js . ' type="submit" value="' . $text . '"' . $tooltip . $parameters . ' />';
+        
+      }
+//-eof-20141016-lat9-css3_buttons-Add font-awesome glyphs  *** 2 of 3 ***
+    }
+
+    if ($type=='button'){
+      // link button
+      $css_button = '<span class="' . $mouse_out_class . '" ' . $css_button_js . $tooltip . $parameters . '>&nbsp;' . $button_glyph . $text . '&nbsp;</span>';  //-20141016-lat9-css3_buttons-Add font-awesome glyphs *** 3 of 3 ***
+    }
+    return $css_button;
+  }
+          </textarea></li>
+          <li>Edit your store's current template version of <code class="no-pad">html_header.php</code>, present in the <code class="no-pad">/includes/templates/YOUR_TEMPLATE/common</code> folder, adding the following lines after all &lt;style&gt; statements and before the first &lt;script&gt; statement:<textarea rows="3">
+//-bof-20141016-lat9-css3_buttons  *** 1 of 1 ***
+  require ($template->get_template_dir ('tpl_load_font_awesome.php', DIR_WS_TEMPLATE, $current_page_base, 'common'). '/tpl_load_font_awesome.php');
+//-eof-20141016-lat9-css3_buttons  *** 1 of 1 ***
+          </textarea></li>
+        </ol>
+      </div>
+      <div id="customization">
+        <p>This section identifies the configuration items available for the plugin and gives you some &quot;guidance&quot; as to how to customize your use of <em>Font Awesome</em> glyphs.</p>
+
+        <div class="tab-container" id="inner-container">
+          <ul class="etabs">
+            <li class="tab"><a href="#config">Configuration</a></li>
+            <li class="tab"><a href="#custom">Customization</a></li>
+          </ul>
+          <div class="panel-container">
+            <div id="config">
+              <h3>Configuration-&gt;Layout Settings Additions</h3>
+              <p>Once you've copied the plugin's files and signed into your Zen Cart admin, the following configuration settings are added to your admin's <em>Configuration-&gt;Layout Settings</em>.  Make sure that the <em>CSS Buttons</em> setting's value is <em>True</em> to enable the CSS3 buttons.</p>
+              <table>
+                <tr>
+                  <th>Title</th>
+                  <th>Description</th>
+                  <th>Default</th>
+                </tr>
+                <tr>
+                  <td>Include a link to the Font Awesome stylesheet?</td>
+                  <td>If true, a link to the Font Awesome CSS file will be included in each page's header.  If your template already includes Font Awesome, leave this setting <em>false</em>.</td>
+                  <td>false</td>
+                </tr>
+                <tr>
+                  <td>Font Awesome version number</td>
+                  <td>Enter the Font Awesome version number to load, if the previous setting is set to <em>true</em>.</td>
+                  <td>4.2.0</td>
+                </tr>
+                <tr>
+                  <td>Submit-button HTML Tag</td>
+                  <td>Identify the type of HTML tag to use for CSS-generated submit buttons, either <em>input</em> (default) or <em>button</em>.  Please note that the <em>button</em> tag is not fully supported on older browsers.</td>
+                  <td>input</td>
+                </tr>
+              </table>
+            </div>
+            
+            <div id="custom">
+              <h3>Customization</h3>
+              <p>Edit /includes/templates/YOUR_TEMPLATE/css/stylesheet_css_buttons.css to customize the buttons' background, border and text colors to match your website's scheme.  The buttons below show the default coloring.</p>
+              <div id="buttons">
+                <div class="buttonRow forward"><input class="submit_button button cssButton button_submit" onmouseover="this.className='cssButtonHover button_submit button_submitHover'" onmouseout="this.className='submit_button button cssButton button_submit'" type="submit" value="Send" /></div> 
+                <div class="buttonRow back"><a href="#"><span class="normal_button button cssButton button_link" onmouseover="this.className='normal_button button cssButtonHover button_link button_linkHover'" onmouseout="this.className='normal_button button cssButton button_link'">&nbsp;Back&nbsp;</span></span></a></div>
+              </div>
+              <div class="clearBoth"></div>
+              <p>To include <em>Font Awesome</em> glyphs in your buttons, edit the file /includes/extra_definitions/css_button_glyphs.php to assign the glyphs on a button-by-button basis using the array defined within that script.  The &quot;Send&quot; button below shows the formatting displayed when <em>Submit-button HTML Tag</em> is set to <b>button</b>.  In all cases, the glyph you define is prepended to the button's name.</p>
+              <p><strong>Note:</strong> Font Awesome glyphs are not applied when <em>Submit-button HTML Tag</em> is set to <b>input</b>.</p>
+              <div id="fa-buttons">
+                <div class="buttonRow forward"><button class="cssButton submit_button button  button_send" onmouseover="this.className='cssButtonHover  button_send button_sendHover'" onmouseout="this.className='cssButton submit_button button  button_send'" type="submit" value="Send Now"><i class="fa fa-send"></i>&nbsp;&nbsp;Send</button></div>
+                <div class="buttonRow back"><span class="cssButton normal_button button  button_back" onmouseover="this.className='cssButtonHover normal_button button  button_back button_backHover'" onmouseout="this.className='cssButton normal_button button  button_back'">&nbsp;<i class="fa fa-undo"></i>&nbsp;&nbsp;Back&nbsp;</span></div>
+              </div>
+
+              <p>The button text for the built-in Zen-Cart buttons is found in the alt-tag text in /includes/languages/english/YOUR_TEMPLATE/button_names.php.  For example, the text for the "Send" button above comes from this PHP define:</p>
+              <code>define('BUTTON_SEND_ALT', 'Send');</code>
+              <p><strong>Note:</strong> Zen Cart's standard processing in the function <em>zen_image_submit</em> (also in /includes/functions/html_output.php) forces a default to the button's image if the button's alt-text is more than 30 characters in length. <em>This "trick" only applies to the submit-type buttons; a similar check does not occur for link-type buttons!</em></p>
+              <p><strong>Note 2:</strong> You can style an individual button by using the button's name as a selector.  Remember to place these definitions at the bottom of the stylesheet_css_buttons.css file and make sure that the non-Hover styling is specified before the Hover styling:
+              <pre>
+              span.normal_button.button_sold_out_sm {
+                background-color: blue;
+              }
+              span.normal_button.button_sold_out_smHover {
+                background-color: red;
+              }
+              </pre>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div id="version">
+        <p>This section identifies the files added or modified for this plugin as well as the plugin's change history.</p>
+
+        <div class="tab-container" id="inner-container">
+          <ul class="etabs">
+            <li class="tab"><a href="#files">File List</a></li>
+            <li class="tab"><a href="#changes">Change History</a></li>
+          </ul>
+          <div class="panel-container">
+            <div id="files">
+              <p>The plugin provides the following files in its distribution zip-file.</p>
+              <ol>
+                <li>/includes/extra_datafiles/css_button_glyphs.php</li>
+                <li>/includes/templates/template_default/common/tpl_load_font_awesome.php</li>
+                <li>/YOUR_ADMIN/includes/functions/extra_functions/init_css3_buttons.php</li>
+              </ol>
+            </div>
+            
+            <div id="changes">
+              <ul>
+                <li>v1.0.0, 2012-04-15, Initial release.</li>
+                <li>v1.0.1, 2012-04-24<ul>
+                  <li>Corrected problem with submit button hover state on Internet Explorer.</li>
+                  <li>Updated this readme to note that the CSS button functionality needs to be enabled in the admin settings.</li>
+                </ul></li>
+                <li>v1.0.2, 2013-03-16<ul>
+                  <li>Simplified HTML generated for normal (i.e. non-submit) buttons and enabled button-specific styling. No changes are required to your existing CSS if you are updating.</li>
+                  <li>Removed the box-shadow styling from the overall button CSS, was causing a small 1px <em>shadow</em> when hovering on the link-type buttons.</li>
+                  <li>Removed 'active' selector styling from the CSS file; was causing unwanted "jerk" on hover.</li>
+                </ul></li>
+                <li>v1.0.3, 2013-12-20<ul>
+                  <li>If the <em>name</em> attribute is included in the $parameters for a submit-type button, need to &quot;emulate&quot; the return from an &lt;input type=&quot;image&quot; /&gt; type button press by adding <b>_x</b> to the name specified. The solution is based on <a href="http://www.zen-cart.com/showthread.php?47554-Edit-Bug-on-the-Send-Gift-Certificate-Confirmation-page-using-CSS-buttons" target="_blank">this</a> thread in the Zen Cart forums.</li>
+                </ul></li>
+                <li>v1.0.4, 2014-04-16<ul>
+                  <li>Include the &quot;memory exhausted&quot; fix (see <a href="http://www.zen-cart.com/showthread.php?207435-php-5-4-fatal-error-Allowed-memory-size-of-83886080-bytes-exhausted&p=1240551#post1240551" target="_blank">this</a> post for details) in the <em>zen_href_link</em> function in /includes/functions/html_output.php.</li>
+                </ul></li>
+                <li>v1.1.0, 2014-10-18<ul>
+                  <li>Include a method to allow <em>Font Awesome</em> glyphs to be included in the CSS buttons.  This method was gratefully borrowed from a prototype developed by <em>rbarbour</em>.</li>
+                </ul></li>
+                <li>v1.1.1, 2015-11-29<ul>
+                  <li>Include security-patch for <b>/includes/functions/html_output.php</b>, per Zen Cart forums.</li>
+                </ul></li>
+                <li>v1.1.2, 2015-12-24<ul>
+                  <li>Update to use Zen Cart v1.5.5 as the change-basis for all core- and template-files' changes.</li>
+                </ul></li>
+                <li>v1.1.3, 2016-03-31<ul>
+                  <li>Plugin drops support for Zen Cart versions prior to 1.5.4; installation instructions <b>heavily</b> modified!</li>
+                  <li>Readme restructuring, enabling all plugin's readme files to co-exist under the /docs folder.</li>
+                </ul></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    $('#outer-container, #inner-container').easytabs();
+  </script>
+
+</body>
+</html>
